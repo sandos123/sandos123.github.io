@@ -8,7 +8,7 @@ function cookieConsent() {
         document.cookie = "MyTestCookie" + "=" + "true" + ";" 
           + expires 
           + ";path=/" //+ $A.get("$Site.coreUrlPrefix")
-          + ";domain=" + $A.get("$Site.absCoreUrl");
+          + ";domain=." + $A.get("$Site.absCoreUrl");
     }
 }
 
