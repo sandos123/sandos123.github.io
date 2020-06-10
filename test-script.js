@@ -7,13 +7,20 @@ function cookieConsent() {
         var expires = "expires="+ d.toUTCString();
         document.cookie = "MyTestCookie" + "=" + "true" + ";" 
           + expires 
+          + ";path=/"; //+ $A.get("$Site.coreUrlPrefix")
+          //+ ";domain=." + new URL($A.get("$Site.absCoreUrl")).host
+    } else {
+        document.cookie = "MyTestCookie" + "=" + ";" 
+          + "expires=Thu, 01 Jan 1970 00:00:00 UTC;" + 
           + ";path=/" //+ $A.get("$Site.coreUrlPrefix")
-          + ";domain=." + $A.get("$Site.absCoreUrl");
+          //+ ";domain=." + $A.get("$Site.absCoreUrl");
     }
 }
 
 window.onload = function() {
-  cookieConsent();
+    if (document.cookie.indexOf("MyTestCookie") == -1) {
+        cookieConsent();
+    }
 }
 
 
